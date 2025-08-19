@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+
+/* ===== カスタムテーマ設定 ===== */
+@theme {
+  /* ブランドカラー */
+  --color-logo: #007a3f;
+  --color-background: #d9f4cd;
+  --color-button: #f4a261;
+  --color-button-hover: #e68a3f;
+  --color-text: #555555;
+
+  /* 日本語フォント */
+  --font-sans: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ===== カスタムユーティリティ ===== */
+.bg-logo {
+  background-color: var(--color-logo);
+}
+
+.text-logo {
+  color: var(--color-logo);
+}
+
+.bg-brand {
+  background-color: var(--color-background);
+}
+
+.text-main {
+  color: var(--color-text);
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-lg px-4 py-2 font-semibold;
+  background-color: var(--color-button);
+  color: white;
+}
+
+.btn:hover {
+  background-color: var(--color-button-hover);
+}
