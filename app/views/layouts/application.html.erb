@@ -16,8 +16,6 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Tailwind と application.css（順序は Tailwind -> application） %>
-    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
     <%# Rails 7 (Importmap) の JS 読み込み。jsbundling を使ってないならこちら %>
