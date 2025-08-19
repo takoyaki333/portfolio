@@ -1,0 +1,32 @@
+<header class="sticky top-0 z-50 bg-brand border-b-4 border-logo">
+  <div class="container mx-auto px-4">
+    <div class="flex h-16 items-center justify-between text-main">
+      <!-- 左：ロゴ -->
+      <div class="flex items-center gap-2">
+        <%= link_to root_path do %>
+          <%= image_tag "logo.png", alt: "Carebit Logo", class: "h-12 w-auto" %>
+        <% end %>
+        <span class="text-xl font-bold text-logo">TOP</span>
+      
+      </div>
+
+      <!-- 右：ログイン/新規登録 or ログアウト / ハンバーガーメニュー-->
+      <div class="flex items-center gap-3">
+        <% if defined?(user_signed_in?) && user_signed_in? %>
+          <span class="hidden sm:inline text-sm font-sans">こんにちは、<%= current_user.try(:name) || "ユーザー" %> さん</span>
+          <%= link_to (defined?(destroy_user_session_path) ? destroy_user_session_path : "#"),
+                      data: { turbo_method: :delete },
+                      class: "btn" do %>
+            ログアウト
+          <% end %>
+        <% else %>
+          <%= link_to (defined?(new_user_session_path) ? new_user_session_path : "#"),
+                      class: "btn" do %>
+            ログイン
+          <% end %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>
