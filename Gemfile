@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+ruby "3.2.7"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.2", ">= 7.2.2.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -58,3 +60,7 @@ group :test do
 end
 
 gem "cssbundling-rails", "~> 1.4"
+
+gem "devise", "~> 4.9"
+
+gem "rails-i18n"
