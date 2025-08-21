@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  # Carebit 選択ページ
+  get "carebit/select", to: "carebits#select"
+  post "carebit/choose", to: "carebits#choose"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
