@@ -1,5 +1,5 @@
 class MypagesController < ApplicationController
-  before_action :authenticate_user!  
+  before_action :authenticate_user!
 
   def show
     @today_log = current_user.user_carebit_logs.find_by(performed_on: Date.today)
