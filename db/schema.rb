@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_20_090453) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_21_172621) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,21 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_20_090453) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_carebit_logs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "carebit_action_id", null: false
+    t.date "performed_on", null: false
+    t.integer "status", default: 0, null: false
+    t.text "diary_note"
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["carebit_action_id"], name: "index_user_carebit_logs_on_carebit_action_id"
+    t.index ["user_id", "performed_on"], name: "index_user_carebit_logs_on_user_id_and_performed_on", unique: true
+    t.index ["user_id", "status", "performed_on"], name: "index_user_carebit_logs_on_user_id_and_status_and_performed_on"
+    t.index ["user_id"], name: "index_user_carebit_logs_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,4 +54,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_20_090453) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "user_carebit_logs", "carebit_actions"
+  add_foreign_key "user_carebit_logs", "users"
 end
