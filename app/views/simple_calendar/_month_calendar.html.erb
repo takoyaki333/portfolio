@@ -1,0 +1,43 @@
+<div class="simple-calendar">
+  <div class="calendar-heading mb-2 text-center font-bold text-lg">
+    <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title">
+      <%= start_date.year %>年<%= start_date.month %>月
+    </time>
+  </div>
+
+  <table class="w-full border-collapse table-fixed">
+    <thead>
+      <tr>
+        <% date_range.slice(0, 7).each do |day| %>
+          <th class="py-2 text-center font-medium border">
+            <%= t('date.abbr_day_names')[day.wday] %>
+          </th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% date_range.each_slice(7) do |week| %>
+        <tr>
+          <% week.each do |day| %>
+            <td class="align-top border w-1/7
+                       <%= 'bg-green-100 ring-2 ring-green-500' if day == Date.today %>">
+              <div class="relative h-24 p-1">
+                <!-- 日付を左上に表示 -->
+                <div class="absolute top-1 left-1 text-xs font-semibold">
+                  <%= day.day %>
+                </div>
+
+                <!-- Carebitスタンプなど -->
+                <div class="flex justify-center items-center h-full">
+                  <%# ⚠️ ここではブロックからの date.day 出力は消してOK %>
+                  <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
+                </div>
+              </div>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

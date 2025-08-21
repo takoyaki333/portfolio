@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root "home#index"
   get "home/index"
 
@@ -7,6 +8,9 @@ Rails.application.routes.draw do
   # Carebit 選択ページ
   get "carebit/select", to: "carebits#select"
   post "carebit/choose", to: "carebits#choose"
+
+  # マイページ
+  get "mypage", to: "mypages#show"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

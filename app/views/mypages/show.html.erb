@@ -1,0 +1,45 @@
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+  <!-- 左側：カレンダー -->
+  <div>
+    <div class="bg-white rounded-lg shadow p-4">
+      <%= month_calendar do |date| %>
+        <!-- スタンプやアクションを置く場所 -->
+      <% end %>
+
+      <!-- カレンダー下に月移動リンクを配置 -->
+      <div class="flex justify-between mt-4">
+        <%= link_to "◀ 前月", url_for(params.permit!.to_h.merge(start_date: @start_date - 1.month)), 
+                    class: "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" %>
+        <%= link_to "翌月 ▶", url_for(params.permit!.to_h.merge(start_date: @start_date + 1.month)), 
+                    class: "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右側：カード -->
+  <div>
+    <div class="bg-gradient-to-b from-green-50 to-green-100 rounded-xl shadow-lg p-6 flex flex-col justify-between h-full">
+      
+      <!-- 見出し -->
+      <h2 class="text-xl font-bold text-green-800 mb-4 flex items-center">
+        🌱 今日のCarebit
+      </h2>
+
+      <% if @today_log.nil? %>
+        <!-- 未選択時 -->
+        <div class="flex-1 flex flex-col justify-center items-center text-center space-y-4">
+          <p class="font-semibold text-gray-700">まだCarebitが選択されていません</p>
+          <%= link_to "👉 今日のCarebitを選ぶ", carebit_select_path, 
+                class: "w-full py-3 text-lg bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition" %>
+          <%= link_to "📊 実績を確認する", "#", 
+                class: "w-full py-3 text-lg bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" %>
+        </div>
+      <% end %>
+
+      <!-- 下部にちょっとした励ましメッセージ -->
+      <div class="mt-6 text-sm text-gray-600 text-center italic">
+        「小さな一歩が、大きな習慣に」
+      </div>
+    </div>
+  </div>
+</div>

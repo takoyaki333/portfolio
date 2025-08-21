@@ -64,3 +64,5 @@ gem "cssbundling-rails", "~> 1.4"
 gem "devise", "~> 4.9"
 
 gem "rails-i18n"
+
+gem "simple_calendar"
