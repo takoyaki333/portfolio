@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  carebit_action: one
+  performed_on: 2025-08-22
+  status: 1
+  diary_note: MyText
+  completed_at: 2025-08-22 02:26:21
+
+two:
+  user: two
+  carebit_action: two
+  performed_on: 2025-08-22
+  status: 1
+  diary_note: MyText
+  completed_at: 2025-08-22 02:26:21
