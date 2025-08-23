@@ -10,13 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_21_172621) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_23_133723) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "carebit_actions", force: :cascade do |t|
     t.integer "category"
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "encouragement_messages", force: :cascade do |t|
+    t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

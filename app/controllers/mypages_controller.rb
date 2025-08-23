@@ -7,5 +7,10 @@ class MypagesController < ApplicationController
 
     # カレンダーの基準日を明示的にセット、前月翌月のリンクのため
     @start_date = params.fetch(:start_date, Date.today).to_date
+
+    # 今日のCarebitを完了していたら、励ましメッセージを取得
+    if @today_log&.completed?
+      @encouragement_message = EncouragementMessage.random
+    end
   end
 end

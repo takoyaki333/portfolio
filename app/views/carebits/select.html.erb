@@ -4,24 +4,30 @@
   <%= form_with url: carebit_choose_path, method: :post, local: true do %>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       <% [
-        { category: "メンタルケア", action: @mental_action, image: "mental.png" },
-        { category: "体づくり", action: @physical_action, image: "physical.png" },
-        { category: "生活習慣", action: @lifestyle_action, image: "lifestyle.png" }
+        { category: "メンタルケア", action: @mental_action },
+        { category: "体づくり",   action: @physical_action },
+        { category: "生活習慣",   action: @lifestyle_action }
       ].each do |card| %>
         <label class="block cursor-pointer">
+          <!-- ラジオボタン（どのCarebitを選ぶか） -->
           <input type="radio" name="carebit_action_id" value="<%= card[:action].id %>" class="hidden peer">
-          
+
+          <!-- カードデザイン -->
           <div class="bg-white shadow rounded-xl p-6 flex flex-col items-center transition transform hover:scale-105 peer-checked:ring-4 peer-checked:ring-logo">
+            <!-- カテゴリ名 -->
             <h2 class="text-lg font-semibold text-logo mb-2"><%= card[:category] %></h2>
-            
-            <%= image_tag card[:image], class: "w-16 h-16 mb-3" %>
-            
+
+            <!-- カテゴリに応じた画像 -->
+            <%= image_tag category_image(card[:action].category), class: "w-16 h-16 mb-3" %>
+
+            <!-- アクション名 -->
             <p class="text-xl font-bold text-main text-center"><%= card[:action].title %></p>
           </div>
         </label>
       <% end %>
     </div>
 
+    <!-- ボタン群 -->
     <div class="flex justify-center gap-6">
       <%= link_to "チェンジ", carebit_select_path, class: "btn text-lg px-6 py-3" %>
       <%= submit_tag "これにする！", class: "btn text-lg px-6 py-3" %>
