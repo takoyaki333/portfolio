@@ -1,5 +1,6 @@
 # db/seeds.rb
 
+# --- Carebitアクションの投入 ---
 carebit_actions = {
   mental: [
     "深呼吸を3回する",
@@ -163,4 +164,20 @@ carebit_actions.each do |category, titles|
   titles.each do |title|
     CarebitAction.find_or_create_by!(category: CarebitAction.categories[category], title: title)
   end
+end
+
+# --- 完了後メッセージの投入 ---
+encouragement_messages = [
+  "✨ 今日もおつかれさま！",
+  "☀️ 積み重ねが未来を変えるよ",
+  "💪 継続できて素晴らしい！",
+  "🌸 自分をちゃんと大事にできてるね",
+  "🎉 Carebit達成！よくがんばった！",
+  "🍀 自分を褒めてあげよう",
+  "😌 心と体、ちゃんとケアできたね",
+  "🌈 その調子！"
+]
+
+encouragement_messages.each do |msg|
+  EncouragementMessage.find_or_create_by!(text: msg)
 end

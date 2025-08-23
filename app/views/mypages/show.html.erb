@@ -9,13 +9,12 @@
       <!-- カレンダー下に月移動リンクを配置 -->
       <div class="flex justify-between mt-4">
         <%= link_to "◀ 前月",
-            url_for(params.permit(:start_date).to_h.merge(start_date: @start_date - 1.month)),
-            class: "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" %>
+              url_for(params.permit(:start_date).to_h.merge(start_date: @start_date - 1.month)),
+              class: "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" %>
 
         <%= link_to "翌月 ▶",
-            url_for(params.permit(:start_date).to_h.merge(start_date: @start_date + 1.month)),
-            class: "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" %>
-
+              url_for(params.permit(:start_date).to_h.merge(start_date: @start_date + 1.month)),
+              class: "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" %>
       </div>
     </div>
   </div>
@@ -35,11 +34,50 @@
           <p class="font-semibold text-gray-700">まだCarebitが選択されていません</p>
           <%= link_to "👉 今日のCarebitを選ぶ", carebit_select_path, 
                 class: "w-full py-3 text-lg bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition" %>
-          <%= link_to "📊 実績を確認する", "#", 
-                class: "w-full py-3 text-lg bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" %>
+        </div>
+
+      <% elsif @today_log.picked? %>
+        <!-- 選択済み（未完了） -->
+        <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center text-center">
+          <%= image_tag category_image(@today_log.carebit_action.category), class: "w-16 h-16 mb-4" %>
+          <p class="text-lg font-bold text-gray-800 mb-4"><%= @today_log.carebit_action.title %></p>
+          
+          <!-- 完了ボタン -->
+          <button type="button"
+                  class="btn w-full py-3 text-lg"
+                  onclick="document.getElementById('complete-modal').classList.remove('hidden')">
+            完了する
+          </button>
+
+          <!-- モーダル -->
+          <%= render "mypages/diary_modal" if @today_log&.picked? %>
+        </div>
+
+      <% elsif @today_log.completed? %>
+        <!-- 完了済み -->
+        <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center text-center border-4 border-orange-400">
+          <%= image_tag category_image(@today_log.carebit_action.category), class: "w-16 h-16 mb-4" %>
+          
+          <!-- アクション名 -->
+          <p class="text-lg font-bold text-gray-800 mb-2"><%= @today_log.carebit_action.title %></p>
+
+          <!-- 完了メッセージ -->
+          <p class="text-orange-600 font-semibold mt-2">
+            <%= @encouragement_message.text %>
+          </p>
+
+          <% if @today_log.diary_note.present? %>
+            <div class="mt-4 p-3 w-full bg-orange-50 rounded text-gray-700 text-sm border border-orange-200">
+              <%= @today_log.diary_note %>
+            </div>
+          <% end %>
         </div>
       <% end %>
 
+      <!-- 共通：実績ページへのリンク -->
+      <%= link_to "実績を確認する", "#", 
+            class: "w-full py-3 text-lg text-center bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" %>
+      
       <!-- 下部にちょっとした励ましメッセージ -->
       <div class="mt-6 text-sm text-gray-600 text-center italic">
         「小さな一歩が、大きな習慣に」

@@ -1,0 +1,23 @@
+<div id="complete-modal" class="fixed inset-0 flex items-center justify-center hidden z-50">
+  <div class="bg-green-50 rounded-lg shadow-lg p-8 w-[32rem] border-4 border-green-600">
+    <h3 class="text-xl font-bold mb-6 text-center text-green-800">ひとこと日記を追加</h3>
+
+    <%= form_with model: @today_log, url: complete_user_carebit_log_path(@today_log), method: :patch, local: true do |f| %>
+      <%= f.text_area :diary_note,
+            rows: 5,
+            placeholder: "今日の気持ちや一言を残せます",
+            class: "w-full border rounded p-3 mb-6 text-lg bg-white" %>
+
+      <div class="flex justify-end gap-3">
+        <%= button_to "日記を残さず完了する",
+              complete_user_carebit_log_path(@today_log),
+              method: :patch,
+              params: { diary_note: "" },
+              class: "px-5 py-3 bg-gray-300 rounded hover:bg-gray-400 cursor-pointer transition font-semibold" %>
+
+        <%= f.submit "完了する",
+              class: "px-5 py-3 bg-green-600 text-white rounded hover:bg-green-700 cursor-pointer transition font-semibold" %>
+      </div>
+    <% end %>
+  </div>
+</div>

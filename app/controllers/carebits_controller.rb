@@ -19,7 +19,7 @@ class CarebitsController < ApplicationController
     )
 
     if log.save
-      redirect_to carebit_select_path, notice: "今日のCarebitを選択しました！"
+      redirect_to mypage_path, notice: "今日のCarebitを選択しました！"
     else
       redirect_to carebit_select_path, alert: "同じ日に複数のCarebitは選択できません。"
     end

@@ -6,15 +6,15 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
 
     <%# ページ個別の <head> 追記が必要なとき用 %>
     <%= yield :head %>
 
     <%# PWA/アイコン（元のレイアウトから維持） %>
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <%= favicon_link_tag "logo.png", rel: "icon", type: "image/png" %>
+    <%= favicon_link_tag "logo.png", rel: "apple-touch-icon", type: "image/png" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
