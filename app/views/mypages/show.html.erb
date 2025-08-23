@@ -8,10 +8,14 @@
 
       <!-- カレンダー下に月移動リンクを配置 -->
       <div class="flex justify-between mt-4">
-        <%= link_to "◀ 前月", url_for(params.permit!.to_h.merge(start_date: @start_date - 1.month)), 
-                    class: "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" %>
-        <%= link_to "翌月 ▶", url_for(params.permit!.to_h.merge(start_date: @start_date + 1.month)), 
-                    class: "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" %>
+        <%= link_to "◀ 前月",
+            url_for(params.permit(:start_date).to_h.merge(start_date: @start_date - 1.month)),
+            class: "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" %>
+
+        <%= link_to "翌月 ▶",
+            url_for(params.permit(:start_date).to_h.merge(start_date: @start_date + 1.month)),
+            class: "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" %>
+
       </div>
     </div>
   </div>
