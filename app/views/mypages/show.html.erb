@@ -49,8 +49,8 @@
             完了する
           </button>
 
-          <!-- モーダル -->
-          <%= render "mypages/diary_modal" if @today_log&.picked? %>
+          <!--アクション完了モーダル -->
+          <%= render "mypages/diary_modal" if @today_log.picked? %>
         </div>
 
       <% elsif @today_log.completed? %>
