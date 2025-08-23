@@ -1,0 +1,18 @@
+<!-- モーダル（背景黒なし、ページ内カード表示） -->
+<div id="log-modal" class="hidden">
+  <div class="bg-green-50 rounded-lg shadow-lg p-8 w-[32rem] border-4 border-green-600 mx-auto mt-8">
+    <h3 class="text-xl font-bold mb-6 text-center text-green-800">Carebitの記録</h3>
+
+    <div id="log-modal-content" class="text-center">
+      <!-- Stimulus で内容を差し込む -->
+    </div>
+
+    <div class="mt-6 flex justify-end gap-3">
+      <button type="button"
+              class="px-5 py-3 bg-gray-300 rounded hover:bg-gray-400 cursor-pointer transition font-semibold"
+              onclick="document.getElementById('log-modal').classList.add('hidden')">
+        閉じる
+      </button>
+    </div>
+  </div>
+</div>
