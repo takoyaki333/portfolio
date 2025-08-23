@@ -1,9 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: 1
-  title: MyString
+mental_one:
+  title: "深呼吸をする"
+  category: 0   # ← enumの値は整数で保存される
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
 
-two:
+physical_one:
+  title: "腕立て10回"
   category: 1
-  title: MyString
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+lifestyle_one:
+  title: "早寝早起き"
+  category: 2
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
