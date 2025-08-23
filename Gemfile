@@ -66,3 +66,7 @@ gem "devise", "~> 4.9"
 gem "rails-i18n"
 
 gem "simple_calendar"
+
+gem "chartkick"
+
+gem "groupdate"

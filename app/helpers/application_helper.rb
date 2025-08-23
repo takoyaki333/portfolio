@@ -11,4 +11,12 @@ module ApplicationHelper
       "default.png"
     end
   end
+
+  def category_labels
+    {
+      "mental" => "メンタルケア",
+      "physical" => "体づくり",
+      "lifestyle" => "生活習慣"
+    }
+  end
 end

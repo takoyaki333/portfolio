@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "achievements/index"
   root "home#index"
   get "home/index"
 
@@ -20,6 +21,9 @@ Rails.application.routes.draw do
 
   # Carebitログ詳細取得
   resources :user_carebit_logs, only: [ :show ]
+
+  # 実績一覧ページ
+  resources :achievements, only: [ :index ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
