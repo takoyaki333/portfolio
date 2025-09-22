@@ -1,6 +1,9 @@
 class CarebitsController < ApplicationController
   before_action :authenticate_user!
 
+  # パンくず
+
+
   # カテゴリごとにランダムで1つ選ぶ
   def select
     @mental_action   = CarebitAction.mental.sample

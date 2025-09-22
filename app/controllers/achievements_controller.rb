@@ -1,6 +1,9 @@
 class AchievementsController < ApplicationController
   before_action :authenticate_user!
 
+  # パンくず
+
+
   def index
     # 集計対象期間
     period = params[:period] == "month" ? Time.current.all_month : nil

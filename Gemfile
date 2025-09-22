@@ -70,3 +70,5 @@ gem "simple_calendar"
 gem "chartkick"
 
 gem "groupdate"
+
+gem "gretel", "~> 4.0.2"
