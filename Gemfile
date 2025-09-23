@@ -71,4 +71,4 @@ gem "chartkick"
 
 gem "groupdate"
 
-gem "gretel", "~> 4.0.2"
+gem "gretel", "~> 5.0.1"
